@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://chs1oapgugsxd"]
+
+[ext_resource type="Texture2D" uid="uid://do1cnp8dawwt1" path="res://world/platform/platform_side.png" id="1_4miyi"]
+[ext_resource type="Texture2D" uid="uid://pjrm1lvhncga" path="res://world/platform/platform_mid.png" id="2_7rtuh"]
+[ext_resource type="Texture2D" uid="uid://1odromt6fa51" path="res://world/platform/platform_side_reverse.png" id="3_ybpes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1uku"]
+size = Vector2(112, 31)
+
+[node name="platform_full" type="StaticBody2D"]
+
+[node name="PlatformMid" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_7rtuh")
+
+[node name="PlatformSide" type="Sprite2D" parent="."]
+position = Vector2(-48, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_4miyi")
+
+[node name="PlatformSideReverse" type="Sprite2D" parent="."]
+position = Vector2(48, -1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ybpes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k1uku")

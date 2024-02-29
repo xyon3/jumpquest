@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bide5c84am8a"]
+
+[ext_resource type="Texture2D" uid="uid://pjrm1lvhncga" path="res://world/platform/platform_mid.png" id="1_nrhp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flvhm"]
+size = Vector2(1328, 62)
+
+[node name="floor" type="StaticBody2D"]
+modulate = Color(0.929412, 0.639216, 0.623529, 1)
+position = Vector2(-11, 0)
+
+[node name="PlatformMid" type="Sprite2D" parent="."]
+position = Vector2(40, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid2" type="Sprite2D" parent="."]
+position = Vector2(136, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid3" type="Sprite2D" parent="."]
+position = Vector2(232, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid4" type="Sprite2D" parent="."]
+position = Vector2(334.2, 0.200001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid5" type="Sprite2D" parent="."]
+position = Vector2(430.2, 0.200001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid6" type="Sprite2D" parent="."]
+position = Vector2(526.2, 0.200001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid7" type="Sprite2D" parent="."]
+position = Vector2(622.2, 0.200001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="PlatformMid8" type="Sprite2D" parent="."]
+position = Vector2(718.2, 0.200001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_nrhp4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(544, 1)
+shape = SubResource("RectangleShape2D_flvhm")

@@ -1,0 +1,6 @@
+res://characters/nicolo/nicolo.tscn
+res://main.tscn
+res://characters/player.tscn
+res://world/platform_full.tscn
+res://world/platform/floor/floor.tscn
+res://world/scenes/climb_scene.tscn

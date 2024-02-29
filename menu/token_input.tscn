@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv6tj5uljqkq6"]
+
+[ext_resource type="FontFile" uid="uid://dsts1wonfnyxt" path="res://fonts/Playpen_Sans/static/PlaypenSans-Regular.ttf" id="1_4740m"]
+[ext_resource type="Script" path="res://menu/TOKEN_INPUT.gd" id="1_nf7nl"]
+[ext_resource type="FontFile" uid="uid://c8i8ani2ppdv5" path="res://fonts/Playpen_Sans/static/PlaypenSans-SemiBold.ttf" id="2_srx5l"]
+
+[node name="TOKEN_INPUT" type="LineEdit"]
+offset_right = 600.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("1_4740m")
+theme_override_font_sizes/font_size = 26
+script = ExtResource("1_nf7nl")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 81.0
+offset_right = 395.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("2_srx5l")
+theme_override_font_sizes/font_size = 28
+text = "Press Enter ⏎
+"
+
+[connection signal="text_submitted" from="." to="." method="_on_text_submitted"]
+[connection signal="ready" from="HTTPRequest" to="." method="_on_http_request_ready"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

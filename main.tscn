@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b037syy7rqut2"]
+[gd_scene load_steps=6 format=3 uid="uid://b037syy7rqut2"]
 
 [ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="1_048b2"]
 [ext_resource type="Script" path="res://main.gd" id="1_ybg2u"]
+[ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="2_gdn2f"]
 [ext_resource type="PackedScene" uid="uid://bide5c84am8a" path="res://world/platform/floor/floor.tscn" id="3_tft8y"]
 [ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="5_w3a8u"]
 
@@ -9,23 +10,69 @@
 y_sort_enabled = true
 script = ExtResource("1_ybg2u")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_gdn2f")]
+offset_left = 1072.0
+offset_top = 8.0
+offset_right = 1112.0
+offset_bottom = 48.0
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.988235, 0.701961, 0.627451, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_048b2")]
 position = Vector2(578, 544)
 
-[node name="floor2" parent="." instance=ExtResource("3_tft8y")]
-modulate = Color(1, 1, 1, 1)
-position = Vector2(600, 634)
-
 [node name="floor" parent="." instance=ExtResource("3_tft8y")]
 modulate = Color(1, 1, 1, 1)
 position = Vector2(7, 634)
 
+[node name="floor2" parent="." instance=ExtResource("3_tft8y")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(424, 635)
+
+[node name="floor3" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(1152, 648)
+rotation = -1.5708
+
+[node name="floor4" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, 0)
+rotation = 1.5708
+
+[node name="floor5" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, -776)
+rotation = 1.5708
+
+[node name="floor6" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(1152, 0)
+rotation = -1.5708
+
+[node name="floor7" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, -1400)
+rotation = 1.5708
+
+[node name="floor8" parent="." instance=ExtResource("3_tft8y")]
+visible = false
+modulate = Color(1, 1, 1, 1)
+position = Vector2(1152, -624)
+rotation = -1.5708
+
 [node name="BgFull" type="Sprite2D" parent="."]
 modulate = Color(1, 0.882353, 0.870588, 1)
 self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
-position = Vector2(632, -688)
+light_mask = 131073
+visibility_layer = 524800
+position = Vector2(578, -480)
 scale = Vector2(2.01813, 1.40148)
 texture = ExtResource("5_w3a8u")

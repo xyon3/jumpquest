@@ -16,11 +16,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if (Input.is_action_just_pressed("move_left")):
-			velocity.x -= 20
+			velocity.x -= 30
 		if (Input.is_action_just_pressed("move_right")):
-			velocity.x += 20
+			velocity.x += 30
 		
-
+	#print($".".position)
 	if velocity.x != 0 and is_on_floor():
 		if velocity.x > 0:
 			velocity.x -= 25
@@ -55,14 +55,14 @@ func _physics_process(delta):
 			jump_velocity = TOP_JUMP 
 			speed = TOP_SPEED
 		
-	#if Input.is_action_pressed("move_left") and is_on_floor():
-		#if not Input.is_action_pressed("ui_accept"):
-			#velocity.x = -150
-#
-	## Handle right
-	#if Input.is_action_pressed("move_right") and is_on_floor():
-		#if not Input.is_action_pressed("ui_accept"):
-			#velocity.x = 150
+	if Input.is_action_pressed("move_left") and is_on_floor():
+		if not Input.is_action_pressed("ui_accept"):
+			velocity.x = -150
+
+	# Handle right
+	if Input.is_action_pressed("move_right") and is_on_floor():
+		if not Input.is_action_pressed("ui_accept"):
+			velocity.x = 150
 			
 	#print(get_position_delta())
 

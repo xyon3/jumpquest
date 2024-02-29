@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://cnm00b3w0qgej"]
+[gd_scene load_steps=4 format=3 uid="uid://cnm00b3w0qgej"]
+
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_r0rdy"]
+[ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="2_oumq5"]
+[ext_resource type="PackedScene" uid="uid://bide5c84am8a" path="res://world/platform/floor/floor.tscn" id="3_7ty25"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+position = Vector2(632, -688)
+scale = Vector2(2.01813, 1.40148)
+texture = ExtResource("1_r0rdy")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.988235, 0.701961, 0.627451, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_oumq5")]
+position = Vector2(578, 544)
+
+[node name="floor2" parent="." instance=ExtResource("3_7ty25")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(600, 634)
+
+[node name="floor" parent="." instance=ExtResource("3_7ty25")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(7, 634)
+
+[node name="floor3" parent="." instance=ExtResource("3_7ty25")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(1152, 648)
+rotation = -1.5708
+
+[node name="floor4" parent="." instance=ExtResource("3_7ty25")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, 0)
+rotation = 1.5708

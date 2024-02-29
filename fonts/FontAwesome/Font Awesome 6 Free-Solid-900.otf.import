@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://v3mgdcl81upq"
+path="res://.godot/imported/Font Awesome 6 Free-Solid-900.otf-ef5b5f16c00ff4a93bc4a4f3365a84a2.fontdata"
+
+[deps]
+
+source_file="res://fonts/FontAwesome/Font Awesome 6 Free-Solid-900.otf"
+dest_files=["res://.godot/imported/Font Awesome 6 Free-Solid-900.otf-ef5b5f16c00ff4a93bc4a4f3365a84a2.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

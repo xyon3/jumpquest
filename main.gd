@@ -7,6 +7,8 @@ var last_platform_pos = {
 	"y": 0.0
 }
 
+@onready var player = $Player
+
 func _ready():
 	# place the player
 	
@@ -17,6 +19,11 @@ func _ready():
 	# put 3 random platform
 	random_platform()
 	
+	
+#func _process(delta):
+	#if (player.position.y < -648):
+		#print("OVER 648")
+		
 
 func random_init():
 	var init_platform_x = randf_range(200, 800)
@@ -39,14 +46,14 @@ func random_platform():
 	var platform_direction = 1.0
 	var next_platform_x = 0.0
 	randomize()
-	for i in 8:
+	for i in 6:
 		platform_direction = -1 if (randi() % 2) else 1
 		next_platform_x = last_platform_pos.x + (400 * platform_direction)
 		
 		if next_platform_x > 900:
-			next_platform_x = next_platform_x - 500
+			next_platform_x = next_platform_x - 600
 		elif next_platform_x < 200:
-			next_platform_x = next_platform_x + 500
+			next_platform_x = next_platform_x + 600
 		
 		rand_platform_x = randf_range(last_platform_pos.x + (250 * platform_direction), next_platform_x)
 		rand_platform_y = randf_range(last_platform_pos.y - 100, last_platform_pos.y - 200.0)

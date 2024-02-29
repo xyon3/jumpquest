@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv6yyiu1q1s5h"]
+
+[ext_resource type="Texture2D" uid="uid://b0gayvns4b31i" path="res://menu/menu_bg.png" id="1_ogwku"]
+[ext_resource type="Script" path="res://menu.gd" id="1_xh5db"]
+[ext_resource type="PackedScene" uid="uid://dv6tj5uljqkq6" path="res://menu/token_input.tscn" id="2_nig8n"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="3_4e8im"]
+
+[sub_resource type="Animation" id="Animation_ofnop"]
+resource_name = "menu_animate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:theme_override_font_sizes/font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 0.241484),
+"update": 1,
+"values": [80, 87]
+}
+
+[sub_resource type="Animation" id="Animation_htutx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [72]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6tyde"]
+_data = {
+"RESET": SubResource("Animation_htutx"),
+"menu_animate": SubResource("Animation_ofnop")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xh5db")
+
+[node name="MenuBg" type="Sprite2D" parent="."]
+position = Vector2(580, 328)
+scale = Vector2(0.6125, 0.622222)
+texture = ExtResource("1_ogwku")
+
+[node name="TOKEN_INPUT" parent="." instance=ExtResource("2_nig8n")]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 383.0
+offset_right = 876.0
+offset_bottom = 453.0
+placeholder_text = "Paste your token here.."
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 187.0
+offset_right = 836.0
+offset_bottom = 390.0
+theme_override_fonts/font = ExtResource("3_4e8im")
+theme_override_font_sizes/font_size = 72
+text = "JUMP
+QUEST"
+horizontal_alignment = 1
+
+[node name="label_animation" type="AnimationPlayer" parent="Label2"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6tyde")
+}

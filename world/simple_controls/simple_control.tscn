@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://33jjnlcmgemb"]
+
+[ext_resource type="Texture2D" uid="uid://csid2y0tkoyc7" path="res://world/simple_controls/arrows-rotate-solid.svg" id="1_m30et"]
+[ext_resource type="Script" path="res://world/simple_controls/simple_control.gd" id="1_vr5tf"]
+[ext_resource type="Texture2D" uid="uid://rf13m6otqum" path="res://world/simple_controls/volume-high-solid.svg" id="2_v5oy4"]
+
+[node name="simple_control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vr5tf")
+
+[node name="refresh_btn" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.05, 0.05)
+theme_type_variation = &"FlatButton"
+icon = ExtResource("1_m30et")
+flat = true
+
+[node name="mute_btn" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+layout_mode = 0
+offset_left = 32.0
+offset_right = 696.0
+offset_bottom = 520.0
+scale = Vector2(0.05, 0.05)
+theme_type_variation = &"FlatButton"
+icon = ExtResource("2_v5oy4")
+flat = true
+
+[connection signal="pressed" from="refresh_btn" to="." method="_on_refresh_btn_pressed"]
+[connection signal="toggled" from="mute_btn" to="." method="_on_mute_btn_toggled"]

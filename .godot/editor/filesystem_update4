@@ -1,6 +1,14 @@
-res://characters/nicolo/nicolo.tscn
 res://main.tscn
+res://characters/nicolo/nicolo.tscn
 res://characters/player.tscn
 res://world/platform_full.tscn
 res://world/platform/floor/floor.tscn
 res://world/scenes/climb_scene.tscn
+res://menu.tscn
+res://menu/menu.tscn
+res://menu.gd
+res://menu/token_input.tscn
+res://world/simple_controls/simple_control.tscn
+res://main.gd
+res://characters/player.gd
+res://world/simple_controls/simple_control.gd

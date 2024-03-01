@@ -10,27 +10,41 @@
 y_sort_enabled = true
 script = ExtResource("1_ybg2u")
 
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 131073
+visibility_layer = 524800
+position = Vector2(578, -480)
+scale = Vector2(2.01813, 1.40148)
+texture = ExtResource("5_w3a8u")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_gdn2f")]
-offset_left = 1072.0
-offset_top = 8.0
-offset_right = 1112.0
-offset_bottom = 48.0
+top_level = true
+light_mask = 512
+visibility_layer = 512
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_right = -32.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.988235, 0.701961, 0.627451, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_048b2")]
-position = Vector2(578, 544)
-
 [node name="floor" parent="." instance=ExtResource("3_tft8y")]
 modulate = Color(1, 1, 1, 1)
-position = Vector2(7, 634)
+position = Vector2(-129, 635)
 
 [node name="floor2" parent="." instance=ExtResource("3_tft8y")]
 modulate = Color(1, 1, 1, 1)
-position = Vector2(424, 635)
+position = Vector2(463, 635)
 
 [node name="floor3" parent="." instance=ExtResource("3_tft8y")]
 visible = false
@@ -68,11 +82,5 @@ modulate = Color(1, 1, 1, 1)
 position = Vector2(1152, -624)
 rotation = -1.5708
 
-[node name="BgFull" type="Sprite2D" parent="."]
-modulate = Color(1, 0.882353, 0.870588, 1)
-self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
-light_mask = 131073
-visibility_layer = 524800
-position = Vector2(578, -480)
-scale = Vector2(2.01813, 1.40148)
-texture = ExtResource("5_w3a8u")
+[node name="Player" parent="." instance=ExtResource("1_048b2")]
+position = Vector2(578, 544)

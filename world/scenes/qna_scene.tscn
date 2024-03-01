@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://uxs6gk564vpq"]
+
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_2cbn0"]
+[ext_resource type="Script" path="res://world/scenes/qna_scene.gd" id="1_48e6s"]
+[ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="2_04pxt"]
+[ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_vt2ud"]
+[ext_resource type="PackedScene" uid="uid://chs1oapgugsxd" path="res://world/platform_full.tscn" id="4_pt2rd"]
+[ext_resource type="PackedScene" uid="uid://cfmdn5su471fm" path="res://world/platform/moving_platform.tscn" id="4_wdwmv"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="7_gutu5"]
+
+[node name="qna_scene" type="Node2D"]
+script = ExtResource("1_48e6s")
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 8
+visibility_layer = 16
+position = Vector2(578, -480)
+scale = Vector2(2.01813, 1.40148)
+texture = ExtResource("1_2cbn0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_04pxt")]
+offset_left = 1072.0
+offset_top = 8.0
+offset_right = 1112.0
+offset_bottom = 48.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.988235, 0.701961, 0.627451, 1)
+
+[node name="Player" parent="." instance=ExtResource("3_vt2ud")]
+position = Vector2(232, 238)
+
+[node name="moving_platform" parent="." instance=ExtResource("4_wdwmv")]
+position = Vector2(232, 299)
+
+[node name="platform_full" parent="." instance=ExtResource("4_pt2rd")]
+position = Vector2(273, 444)
+
+[node name="platform_full2" parent="." instance=ExtResource("4_pt2rd")]
+position = Vector2(477, 444)
+
+[node name="platform_full3" parent="." instance=ExtResource("4_pt2rd")]
+position = Vector2(719, 445)
+
+[node name="platform_full4" parent="." instance=ExtResource("4_pt2rd")]
+position = Vector2(930, 444)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 251.0
+offset_top = 34.0
+offset_right = 893.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 12
+text = "What is the formula when the gravity is not here and is relative to your mom? "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

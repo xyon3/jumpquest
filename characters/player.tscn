@@ -8,6 +8,8 @@
 size = Vector2(34, 36)
 
 [node name="Player" type="CharacterBody2D"]
+light_mask = 2
+visibility_layer = 5
 script = ExtResource("1_4ytjn")
 
 [node name="nicolo" parent="." instance=ExtResource("1_xo6ui")]

@@ -5,6 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://dv6tj5uljqkq6" path="res://menu/token_input.tscn" id="2_nig8n"]
 [ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="3_4e8im"]
 
+[sub_resource type="Animation" id="Animation_htutx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [72]
+}
+
 [sub_resource type="Animation" id="Animation_ofnop"]
 resource_name = "menu_animate"
 loop_mode = 1
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "values": [80, 87]
 }
 
-[sub_resource type="Animation" id="Animation_htutx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label2:theme_override_font_sizes/font_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [72]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6tyde"]
 _data = {
 "RESET": SubResource("Animation_htutx"),
@@ -49,6 +49,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_xh5db")
 
 [node name="MenuBg" type="Sprite2D" parent="."]

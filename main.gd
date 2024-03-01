@@ -46,7 +46,7 @@ func random_platform():
 	var platform_direction = 1.0
 	var next_platform_x = 0.0
 	randomize()
-	for i in 6:
+	for i in 5:
 		platform_direction = -1 if (randi() % 2) else 1
 		next_platform_x = last_platform_pos.x + (400 * platform_direction)
 		
@@ -56,7 +56,7 @@ func random_platform():
 			next_platform_x = next_platform_x + 600
 		
 		rand_platform_x = randf_range(last_platform_pos.x + (250 * platform_direction), next_platform_x)
-		rand_platform_y = randf_range(last_platform_pos.y - 100, last_platform_pos.y - 200.0)
+		rand_platform_y = randf_range(last_platform_pos.y - 150, last_platform_pos.y - 175.0)
 		put_platform(
 			Vector2(
 				rand_platform_x,

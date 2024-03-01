@@ -1,0 +1,9 @@
+res://characters/nicolo/nicolo.tscn::bf357c59a062a8d72f6942da57b7a559::1709261025::res://.godot/exported/133200997/export-a40683302bac87aca7819f4cd8c3a670-nicolo.scn
+res://main.tscn::6390fade15e21092fed5386fba0f2329::1709261025::res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn
+res://characters/player.tscn::f859d293f8e67aabc5da94704059cbb5::1709261025::res://.godot/exported/133200997/export-954aa54276f838cf6291a154b8d98bd0-player.scn
+res://menu/token_input.tscn::d52597d8b4984ff5073232319b26f6d2::1709239585::res://.godot/exported/133200997/export-724960e27042ebd84a2d4c75a45224ac-token_input.scn
+res://world/platform/floor/floor.tscn::b4552d818b348ecee259f70c8287ea62::1709261025::res://.godot/exported/133200997/export-2376e0499356552ca2dbdd0682935e86-floor.scn
+res://world/platform_full.tscn::94eced30ecfda886be69e1683f845a18::1709261025::res://.godot/exported/133200997/export-2481abb5702ae6a93b84df55e1243057-platform_full.scn
+res://menu/menu.tscn::a2efc349d8045ef04c77ee992d3886ae::1709239585::res://.godot/exported/133200997/export-4e96fb701b3cf98083d3f26d878d1a8e-menu.scn
+res://world/scenes/qna_scene.tscn::87451b62d8685ee3b0cfca4d8e3c3312::1709261025::res://.godot/exported/133200997/export-c44310330d4b4e2309d71476b6a35331-qna_scene.scn
+res://world/simple_controls/simple_control.tscn::81fb3a56fe657692f182aec4af488e6e::1709261025::res://.godot/exported/133200997/export-cc97ed26186f9c8ccde915039ffde3d6-simple_control.scn

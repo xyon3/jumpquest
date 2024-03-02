@@ -10,16 +10,8 @@
 y_sort_enabled = true
 script = ExtResource("1_ybg2u")
 
-[node name="BgFull" type="Sprite2D" parent="."]
-modulate = Color(1, 0.882353, 0.870588, 1)
-self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
-light_mask = 131073
-visibility_layer = 524800
-position = Vector2(578, -480)
-scale = Vector2(2.01813, 1.40148)
-texture = ExtResource("5_w3a8u")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 follow_viewport_enabled = true
 
 [node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_gdn2f")]
@@ -34,6 +26,15 @@ offset_right = -32.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 131073
+visibility_layer = 524800
+position = Vector2(578, -480)
+scale = Vector2(2.01813, 1.40148)
+texture = ExtResource("5_w3a8u")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.988235, 0.701961, 0.627451, 1)

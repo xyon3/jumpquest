@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmvkkcrh7jp8b"]
+[gd_scene load_steps=8 format=3 uid="uid://bmvkkcrh7jp8b"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_4ytjn"]
 [ext_resource type="PackedScene" uid="uid://f5irj45l3hg3" path="res://characters/nicolo/nicolo.tscn" id="1_xo6ui"]
@@ -7,16 +7,54 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vurlt"]
 size = Vector2(34, 36)
 
+[sub_resource type="Animation" id="Animation_tmmhf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.36]
+}
+
+[sub_resource type="Animation" id="Animation_ohuo3"]
+resource_name = "breathing_light"
+length = 0.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.89, 1.15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojcgh"]
+_data = {
+"RESET": SubResource("Animation_tmmhf"),
+"breathing_light": SubResource("Animation_ohuo3")
+}
+
 [node name="Player" type="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 5
 script = ExtResource("1_4ytjn")
 
-[node name="nicolo" parent="." instance=ExtResource("1_xo6ui")]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_vurlt")
+
+[node name="nicolo" parent="." instance=ExtResource("1_xo6ui")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -50)
@@ -34,3 +72,12 @@ scale = Vector2(0.725, 0.725)
 energy = 1.36
 texture = ExtResource("3_g03se")
 texture_scale = 0.8
+
+[node name="light_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ojcgh")
+}
+
+[node name="coyote_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

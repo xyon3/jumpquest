@@ -10,23 +10,6 @@
 y_sort_enabled = true
 script = ExtResource("1_ybg2u")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
-follow_viewport_enabled = true
-
-[node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_gdn2f")]
-top_level = true
-light_mask = 512
-visibility_layer = 512
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -72.0
-offset_right = -32.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
 [node name="BgFull" type="Sprite2D" parent="."]
 modulate = Color(1, 0.882353, 0.870588, 1)
 self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
@@ -85,3 +68,20 @@ rotation = -1.5708
 
 [node name="Player" parent="." instance=ExtResource("1_048b2")]
 position = Vector2(578, 544)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_gdn2f")]
+top_level = true
+light_mask = 512
+visibility_layer = 512
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = 12.0
+offset_right = -36.0
+offset_bottom = 52.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0

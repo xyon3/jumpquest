@@ -83,3 +83,5 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_6tyde")
 }
+
+[editable path="TOKEN_INPUT"]

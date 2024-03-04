@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://ye6a8mheoreb"]
+
+[ext_resource type="Texture2D" uid="uid://miejqxpvkxka" path="res://world/platform/potal_platform/portal.png" id="1_220kp"]
+[ext_resource type="Texture2D" uid="uid://pjrm1lvhncga" path="res://world/platform/platform_mid.png" id="2_61qpl"]
+[ext_resource type="Texture2D" uid="uid://do1cnp8dawwt1" path="res://world/platform/platform_side.png" id="3_gg3h3"]
+[ext_resource type="Texture2D" uid="uid://1odromt6fa51" path="res://world/platform/platform_side_reverse.png" id="4_y52xu"]
+[ext_resource type="Texture2D" uid="uid://2vuxmr5jt3jh" path="res://textures/light.png" id="5_b7jp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1uku"]
+size = Vector2(112, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5r2b1"]
+radius = 55.2268
+
+[node name="portal_platform" type="StaticBody2D"]
+light_mask = 16
+visibility_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k1uku")
+
+[node name="Portal" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.407843)
+self_modulate = Color(6.7, 100, 100, 1)
+light_mask = 16
+visibility_layer = 16
+position = Vector2(0, -53)
+scale = Vector2(0.346103, 0.21533)
+texture = ExtResource("1_220kp")
+
+[node name="PlatformMid" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_61qpl")
+
+[node name="PlatformSide" type="Sprite2D" parent="."]
+position = Vector2(-48, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_gg3h3")
+
+[node name="PlatformSideReverse" type="Sprite2D" parent="."]
+position = Vector2(48, -1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_y52xu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -59)
+color = Color(0.0156863, 0.207843, 0.294118, 1)
+energy = 0.25
+texture = ExtResource("5_b7jp7")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3.8147e-06)
+
+[node name="AreaCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -52)
+shape = SubResource("CircleShape2D_5r2b1")

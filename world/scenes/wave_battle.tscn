@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0473ok1j7rc8"]
+
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_eyvwr"]
+[ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_5jwfl"]
+[ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="4_5w17y"]
+[ext_resource type="PackedScene" uid="uid://chs1oapgugsxd" path="res://world/platform/platform_full.tscn" id="4_xda65"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 131073
+visibility_layer = 524800
+position = Vector2(578, -480)
+scale = Vector2(2.01813, 1.40148)
+texture = ExtResource("1_eyvwr")
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.988235, 0.701961, 0.627451, 1)
+
+[node name="Player" parent="." instance=ExtResource("3_5jwfl")]
+position = Vector2(576, 500)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="simple_control" parent="CanvasLayer" instance=ExtResource("4_5w17y")]
+top_level = true
+light_mask = 512
+visibility_layer = 512
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = 12.0
+offset_right = -36.0
+offset_bottom = 52.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="platform_full4" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(652, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full5" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(547, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full6" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(757, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full2" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(337, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(230, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full3" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(442, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full7" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(865, 644)
+metadata/_edit_group_ = true
+
+[node name="platform_full8" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(929, 644)
+
+[node name="platform_full9" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(133, 465)
+
+[node name="platform_full10" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(1023, 464)
+
+[node name="platform_full11" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(576, 300)
+
+[node name="platform_full12" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(464, 300)
+
+[node name="platform_full13" parent="." instance=ExtResource("4_xda65")]
+position = Vector2(688, 300)

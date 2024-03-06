@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
+class_name MobPacky
 
-const SPEED = 10
+var health = 300
+var damage = 404
+
+
+const SPEED = 200
 var player_chase = false
 var player = null
 
@@ -17,12 +22,13 @@ func _ready():
 	_animate_sprite.play("idle")
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor(): velocity.y += gravity * delta
 	
+	if not is_on_floor(): velocity.y += gravity * delta
+	print(player_chase)
 	if player_chase: 
-		target_position = (player.position - position) * SPEED
-		velocity = target_position
+		velocity.x = position.direction_to(player.position).x * 100
+	else:
+		velocity.x = 0
 		
 	move_and_slide()
 

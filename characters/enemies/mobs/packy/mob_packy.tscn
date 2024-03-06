@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwh727n4f13fn"]
+[gd_scene load_steps=11 format=3 uid="uid://dwh727n4f13fn"]
 
 [ext_resource type="Script" path="res://characters/enemies/mobs/packy/mob_packy.gd" id="1_bkuty"]
 [ext_resource type="Texture2D" uid="uid://b606kpyb6g8l7" path="res://characters/enemies/mobs/packy/packy.png" id="1_ebo1e"]
@@ -45,14 +45,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b87hu"]
-radius = 19.4165
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elby6"]
-radius = 144.42
+radius = 326.345
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojwcr"]
+size = Vector2(155, 20)
 
 [node name="MobPacky" type="CharacterBody2D"]
 light_mask = 2
 visibility_layer = 29
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_bkuty")
 
 [node name="PackyAniSprite" type="AnimatedSprite2D" parent="."]
@@ -63,13 +68,26 @@ animation = &"idle"
 frame_progress = 0.210874
 
 [node name="PackyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -17)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_b87hu")
 
 [node name="PackyDetector" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="DetectorArea" type="CollisionShape2D" parent="PackyDetector"]
 shape = SubResource("CircleShape2D_elby6")
+metadata/_edit_lock_ = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-77.5, -13)
+shape = SubResource("RectangleShape2D_ojwcr")
 
 [connection signal="body_entered" from="PackyDetector" to="." method="_on_packy_detector_body_entered"]
 [connection signal="body_exited" from="PackyDetector" to="." method="_on_packy_detector_body_exited"]

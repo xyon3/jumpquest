@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwh727n4f13fn"]
+
+[ext_resource type="Script" path="res://characters/enemies/mobs/packy/mob_packy.gd" id="1_bkuty"]
+[ext_resource type="Texture2D" uid="uid://b606kpyb6g8l7" path="res://characters/enemies/mobs/packy/packy.png" id="1_ebo1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02b1b"]
+atlas = ExtResource("1_ebo1e")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3ixx"]
+atlas = ExtResource("1_ebo1e")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8x5a"]
+atlas = ExtResource("1_ebo1e")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unfkg"]
+atlas = ExtResource("1_ebo1e")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wd4nj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02b1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3ixx")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8x5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unfkg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b87hu"]
+radius = 19.4165
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elby6"]
+radius = 144.42
+
+[node name="MobPacky" type="CharacterBody2D"]
+light_mask = 2
+visibility_layer = 29
+script = ExtResource("1_bkuty")
+
+[node name="PackyAniSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_wd4nj")
+animation = &"idle"
+frame_progress = 0.210874
+
+[node name="PackyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_b87hu")
+
+[node name="PackyDetector" type="Area2D" parent="."]
+
+[node name="DetectorArea" type="CollisionShape2D" parent="PackyDetector"]
+shape = SubResource("CircleShape2D_elby6")
+
+[connection signal="body_entered" from="PackyDetector" to="." method="_on_packy_detector_body_entered"]
+[connection signal="body_exited" from="PackyDetector" to="." method="_on_packy_detector_body_exited"]

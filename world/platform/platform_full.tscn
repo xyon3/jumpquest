@@ -8,6 +8,8 @@
 size = Vector2(112, 31)
 
 [node name="platform_full" type="StaticBody2D"]
+light_mask = 16
+visibility_layer = 15
 
 [node name="PlatformMid" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 1.90735e-06)

@@ -7,6 +7,8 @@ size = Vector2(1328, 62)
 
 [node name="floor" type="StaticBody2D"]
 modulate = Color(0.929412, 0.639216, 0.623529, 1)
+light_mask = 16
+visibility_layer = 15
 position = Vector2(-11, 0)
 
 [node name="PlatformMid" type="Sprite2D" parent="."]

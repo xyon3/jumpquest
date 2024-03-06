@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0473ok1j7rc8"]
+[gd_scene load_steps=6 format=3 uid="uid://d0473ok1j7rc8"]
 
 [ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_eyvwr"]
 [ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_5jwfl"]
 [ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="4_5w17y"]
 [ext_resource type="PackedScene" uid="uid://chs1oapgugsxd" path="res://world/platform/platform_full.tscn" id="4_xda65"]
+[ext_resource type="PackedScene" uid="uid://dwh727n4f13fn" path="res://characters/enemies/mobs/packy/mob_packy.tscn" id="5_en2v6"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -86,3 +87,6 @@ position = Vector2(464, 300)
 
 [node name="platform_full13" parent="." instance=ExtResource("4_xda65")]
 position = Vector2(688, 300)
+
+[node name="MobPacky" parent="." instance=ExtResource("5_en2v6")]
+position = Vector2(777, 602)

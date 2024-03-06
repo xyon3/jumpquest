@@ -10,7 +10,7 @@ extends Node2D
 
 
 
-@onready var platform = preload("res://world/platform_full.tscn")
+@onready var platform = preload("res://world/platform/platform_full.tscn")
 @onready var portal_platform = preload("res://world/platform/potal_platform/portal_platform.tscn")
 @onready var qna_scene = preload("res://world/scenes/qna_scene.tscn").instantiate()
 

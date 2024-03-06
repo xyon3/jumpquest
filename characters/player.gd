@@ -4,9 +4,13 @@ class_name Player
 const TOP_SPEED = 250.0
 const TOP_JUMP = 600.0
 
-
 var speed = 0.0
 var jump_velocity = 0.0
+
+# Nicolo stats
+var health = 100
+var damage = 20
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

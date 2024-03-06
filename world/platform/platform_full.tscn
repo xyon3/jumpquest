@@ -11,6 +11,10 @@ size = Vector2(112, 31)
 light_mask = 16
 visibility_layer = 15
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k1uku")
+
 [node name="PlatformMid" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(0.1, 0.1)
@@ -25,7 +29,3 @@ texture = ExtResource("2_1wdmf")
 position = Vector2(48, -1.90735e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_70nhd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_k1uku")

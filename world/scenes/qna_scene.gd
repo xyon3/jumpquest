@@ -9,6 +9,8 @@ extends Node2D
 
 @onready var question_text: Label = $CanvasLayer2/question_text
 
+@onready var wave_battle = preload("res://world/scenes/wave_battle.tscn").instantiate()
+
 @onready var portal_platforms = [
 	$portal_platform, 
 	$portal_platform2, 
@@ -44,7 +46,7 @@ func assign_question_data(text, choices, answer):
 		portal_platforms[x].find_child("Label").text = choices[x]
 		if choices[x] == answer:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
-				get_tree().reload_current_scene()
+				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")
 		else:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
 				print(choices[x]+" is wrong")

@@ -16,7 +16,7 @@ modulate = Color(1, 0.882353, 0.870588, 1)
 self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
 light_mask = 8
 visibility_layer = 16
-position = Vector2(618, -485)
+position = Vector2(618, -308)
 scale = Vector2(3.2025, 2.22396)
 texture = ExtResource("1_2cbn0")
 
@@ -35,7 +35,7 @@ color = Color(0.988235, 0.701961, 0.627451, 1)
 [node name="Player" parent="." instance=ExtResource("3_vt2ud")]
 position = Vector2(232, 238)
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="1"]
 zoom = Vector2(1, 1)
 
 [node name="moving_platform" parent="." instance=ExtResource("4_wdwmv")]

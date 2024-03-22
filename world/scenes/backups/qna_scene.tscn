@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://uxs6gk564vpq"]
+
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_2cbn0"]
+[ext_resource type="Script" path="res://world/scenes/qna_scene.gd" id="1_48e6s"]
+[ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="2_04pxt"]
+[ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_vt2ud"]
+[ext_resource type="PackedScene" uid="uid://cfmdn5su471fm" path="res://world/platform/moving_platform.tscn" id="4_wdwmv"]
+[ext_resource type="PackedScene" uid="uid://ye6a8mheoreb" path="res://world/platform/potal_platform/portal_platform.tscn" id="7_84fa5"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="7_gutu5"]
+
+[node name="qna_scene" type="Node2D"]
+script = ExtResource("1_48e6s")
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 8
+visibility_layer = 16
+position = Vector2(618, -485)
+scale = Vector2(3.2025, 2.22396)
+texture = ExtResource("1_2cbn0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="simple_control" parent="CanvasLayer" instance=ExtResource("2_04pxt")]
+offset_left = 1072.0
+offset_top = 8.0
+offset_right = 1112.0
+offset_bottom = 48.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.988235, 0.701961, 0.627451, 1)
+
+[node name="Player" parent="." instance=ExtResource("3_vt2ud")]
+position = Vector2(232, 238)
+
+[node name="Camera2D" parent="Player" index="1"]
+zoom = Vector2(1, 1)
+
+[node name="moving_platform" parent="." instance=ExtResource("4_wdwmv")]
+position = Vector2(232, 299)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="question_text" type="Label" parent="CanvasLayer2"]
+offset_left = 173.0
+offset_top = 34.0
+offset_right = 971.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="portal_platform" parent="." instance=ExtResource("7_84fa5")]
+position = Vector2(163, 449)
+
+[node name="Label" type="Label" parent="portal_platform"]
+offset_left = -56.0
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 12
+text = "Choice1"
+horizontal_alignment = 1
+
+[node name="portal_platform2" parent="." instance=ExtResource("7_84fa5")]
+position = Vector2(426, 449)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="portal_platform2"]
+offset_left = -56.0
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 12
+text = "Choice2"
+horizontal_alignment = 1
+
+[node name="portal_platform3" parent="." instance=ExtResource("7_84fa5")]
+position = Vector2(692, 449)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="portal_platform3"]
+offset_left = -57.0
+offset_top = 21.0
+offset_right = 55.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 12
+text = "Choice3"
+horizontal_alignment = 1
+
+[node name="portal_platform4" parent="." instance=ExtResource("7_84fa5")]
+position = Vector2(971, 449)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="portal_platform4"]
+offset_left = -57.0
+offset_top = 21.0
+offset_right = 55.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("7_gutu5")
+theme_override_font_sizes/font_size = 12
+text = "Choice4"
+horizontal_alignment = 1
+
+[editable path="Player"]

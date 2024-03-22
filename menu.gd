@@ -2,6 +2,8 @@ extends Control
 
 
 
+func _ready():
+	print("DEBUGGING")
 
 func _process(delta):
 	animate_menu()

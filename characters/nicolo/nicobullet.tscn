@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4uwuq7kg751p"]
+
+[ext_resource type="Texture2D" uid="uid://dtr5gn17w6du4" path="res://characters/nicolo/nicolo_bullet.png" id="1_77d7v"]
+[ext_resource type="Script" path="res://characters/nicolo/nicobullet.gd" id="1_nkyk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxqg2"]
+atlas = ExtResource("1_77d7v")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv5np"]
+atlas = ExtResource("1_77d7v")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41m34"]
+atlas = ExtResource("1_77d7v")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uty83"]
+atlas = ExtResource("1_77d7v")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owt45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxqg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv5np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41m34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uty83")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u2hx"]
+radius = 133.333
+height = 488.889
+
+[node name="nicobullet" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_nkyk2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+sprite_frames = SubResource("SpriteFrames_owt45")
+frame_progress = 0.441497
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.045, 0.045)
+shape = SubResource("CapsuleShape2D_3u2hx")

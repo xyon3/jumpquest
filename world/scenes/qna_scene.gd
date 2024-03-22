@@ -47,6 +47,10 @@ func assign_question_data(text, choices, answer):
 		if choices[x] == answer:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
 				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")
+				Global.wave_count = 3
+				Global.wave_type = "NORMAL"
 		else:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
-				print(choices[x]+" is wrong")
+				Global.wave_count = 6
+				Global.wave_type = "PUNISHMENT"
+				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")

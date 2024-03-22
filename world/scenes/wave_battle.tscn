@@ -1,22 +1,100 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0473ok1j7rc8"]
+[gd_scene load_steps=13 format=3 uid="uid://d0473ok1j7rc8"]
 
-[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_eyvwr"]
+[ext_resource type="Script" path="res://world/scenes/wave_battle.gd" id="1_uogkp"]
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="2_oxj5f"]
 [ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_5jwfl"]
 [ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="4_5w17y"]
 [ext_resource type="PackedScene" uid="uid://chs1oapgugsxd" path="res://world/platform/platform_full.tscn" id="4_xda65"]
-[ext_resource type="PackedScene" uid="uid://dwh727n4f13fn" path="res://characters/enemies/mobs/packy/mob_packy.tscn" id="5_en2v6"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="5_0u4i6"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Animation" id="Animation_13imy"]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ejm0"]
+resource_name = "end_msg"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_phxq4"]
+resource_name = "init"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_erkyn"]
+resource_name = "next_init"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74ogw"]
+_data = {
+"default": SubResource("Animation_13imy"),
+"end_msg": SubResource("Animation_8ejm0"),
+"init": SubResource("Animation_phxq4"),
+"next_init": SubResource("Animation_erkyn")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kxpy"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="wave_battle" type="Node2D"]
+script = ExtResource("1_uogkp")
 
 [node name="BgFull" type="Sprite2D" parent="."]
 modulate = Color(1, 0.882353, 0.870588, 1)
 self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
 light_mask = 131073
 visibility_layer = 524800
-position = Vector2(578, -480)
-scale = Vector2(2.01813, 1.40148)
-texture = ExtResource("1_eyvwr")
-metadata/_edit_lock_ = true
+position = Vector2(594, -136)
+scale = Vector2(1.59531, 1.10786)
+texture = ExtResource("2_oxj5f")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.988235, 0.701961, 0.627451, 1)
@@ -24,6 +102,10 @@ color = Color(0.988235, 0.701961, 0.627451, 1)
 [node name="Player" parent="." instance=ExtResource("3_5jwfl")]
 position = Vector2(576, 500)
 metadata/_edit_lock_ = true
+
+[node name="SpawnInterval" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,51 +124,149 @@ grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="platform_full4" parent="." instance=ExtResource("4_xda65")]
+[node name="CommonLabel" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 168.0
+offset_right = 94.0
+offset_bottom = 192.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../CommonLabel")
+libraries = {
+"": SubResource("AnimationLibrary_74ogw")
+}
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+modulate = Color(0, 0, 0, 0.313726)
+layout_mode = 0
+offset_top = 236.0
+offset_right = 40.0
+offset_bottom = 464.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5kxpy")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 264.0
+offset_right = 29.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0.701961, 0, 1)
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 303.0
+offset_right = 29.0
+offset_bottom = 326.0
+theme_override_colors/font_color = Color(1, 0.32549, 0.258824, 1)
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 339.0
+offset_right = 29.0
+offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 16
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 376.0
+offset_right = 29.0
+offset_bottom = 399.0
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 16
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 414.0
+offset_right = 29.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("5_0u4i6")
+theme_override_font_sizes/font_size = 16
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="platform_full4" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(652, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full5" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full5" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(547, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full6" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full6" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(757, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full2" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full2" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(337, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(230, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full3" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full3" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(442, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full7" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full7" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(865, 644)
 metadata/_edit_group_ = true
 
-[node name="platform_full8" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full8" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(929, 644)
 
-[node name="platform_full9" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full9" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(133, 465)
 
-[node name="platform_full10" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full10" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(1023, 464)
 
-[node name="platform_full11" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full11" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(576, 300)
 
-[node name="platform_full12" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full12" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(464, 300)
 
-[node name="platform_full13" parent="." instance=ExtResource("4_xda65")]
+[node name="platform_full13" parent="CanvasGroup" instance=ExtResource("4_xda65")]
 position = Vector2(688, 300)
 
-[node name="MobPacky" parent="." instance=ExtResource("5_en2v6")]
-position = Vector2(777, 602)
+[connection signal="animation_finished" from="CanvasLayer/LabelPlayer" to="." method="_on_label_player_animation_finished"]

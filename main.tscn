@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b037syy7rqut2"]
+[gd_scene load_steps=7 format=3 uid="uid://b037syy7rqut2"]
 
 [ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="1_048b2"]
 [ext_resource type="Script" path="res://main.gd" id="1_ybg2u"]
 [ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="2_gdn2f"]
 [ext_resource type="PackedScene" uid="uid://bide5c84am8a" path="res://world/platform/floor/floor.tscn" id="3_tft8y"]
 [ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="5_w3a8u"]
+[ext_resource type="PackedScene" uid="uid://bbu8a7rvselju" path="res://menu/base_point_scene.tscn" id="6_vrlkh"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -85,3 +86,5 @@ offset_bottom = 52.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="BasePointScene" parent="CanvasLayer" instance=ExtResource("6_vrlkh")]

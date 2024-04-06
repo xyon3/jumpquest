@@ -36,7 +36,6 @@ func _process(delta):
 		_label_player.play("end_msg")
 		_common_label.text = "Proceeding to next question..."
 	
-	print("BEFORE DEFAULT: ", current_wave)
 	if Global.enemies.size() <= 0 and !wave_is_done and !is_initial:
 			_label_player.play("default")
 			_common_label.text = "Wave "+ str(current_wave + 1) + " of " + str( Global.wave_count )
@@ -91,7 +90,11 @@ func _on_label_player_animation_finished(anim_name):
 	if anim_name == "end_msg":
 		Global.current_level += 1
 		wave_cleanup()
-		get_tree().change_scene_to_file("res://world/scenes/qna_scene.tscn")
+		
+		if Global.question_answered.size() < 5:
+			get_tree().change_scene_to_file("res://world/scenes/qna_scene.tscn")
+		else:
+			get_tree().change_scene_to_file("res://world/scenes/result_scene.tscn")
 		
 	if anim_name == "init":
 		_label_player.play("next_init")

@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://world/scenes/wave_battle.gd" id="1_uogkp"]
 [ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="2_oxj5f"]
 [ext_resource type="PackedScene" uid="uid://bmvkkcrh7jp8b" path="res://characters/player.tscn" id="3_5jwfl"]
-[ext_resource type="PackedScene" uid="uid://33jjnlcmgemb" path="res://world/simple_controls/simple_control.tscn" id="4_5w17y"]
 [ext_resource type="PackedScene" uid="uid://chs1oapgugsxd" path="res://world/platform/platform_full.tscn" id="4_xda65"]
 [ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="5_0u4i6"]
+[ext_resource type="PackedScene" uid="uid://bbu8a7rvselju" path="res://menu/base_point_scene.tscn" id="6_iqyh5"]
+[ext_resource type="PackedScene" uid="uid://ic54cn5m4dy2" path="res://menu/level_ui.tscn" id="7_ly68j"]
 
 [sub_resource type="Animation" id="Animation_13imy"]
 resource_name = "default"
@@ -79,11 +80,6 @@ _data = {
 "next_init": SubResource("Animation_erkyn")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kxpy"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-
 [node name="wave_battle" type="Node2D"]
 script = ExtResource("1_uogkp")
 
@@ -109,21 +105,6 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="simple_control" parent="CanvasLayer" instance=ExtResource("4_5w17y")]
-top_level = true
-light_mask = 512
-visibility_layer = 512
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -76.0
-offset_top = 12.0
-offset_right = -36.0
-offset_bottom = 52.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
 [node name="CommonLabel" type="Label" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
@@ -145,81 +126,9 @@ libraries = {
 "": SubResource("AnimationLibrary_74ogw")
 }
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="BasePointScene" parent="CanvasLayer" instance=ExtResource("6_iqyh5")]
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
-modulate = Color(0, 0, 0, 0.313726)
-layout_mode = 0
-offset_top = 236.0
-offset_right = 40.0
-offset_bottom = 464.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5kxpy")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 264.0
-offset_right = 29.0
-offset_bottom = 287.0
-theme_override_colors/font_color = Color(0, 0.701961, 0, 1)
-theme_override_fonts/font = ExtResource("5_0u4i6")
-theme_override_font_sizes/font_size = 16
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 303.0
-offset_right = 29.0
-offset_bottom = 326.0
-theme_override_colors/font_color = Color(1, 0.32549, 0.258824, 1)
-theme_override_fonts/font = ExtResource("5_0u4i6")
-theme_override_font_sizes/font_size = 16
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 339.0
-offset_right = 29.0
-offset_bottom = 362.0
-theme_override_fonts/font = ExtResource("5_0u4i6")
-theme_override_font_sizes/font_size = 16
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 376.0
-offset_right = 29.0
-offset_bottom = 399.0
-theme_override_fonts/font = ExtResource("5_0u4i6")
-theme_override_font_sizes/font_size = 16
-text = "4"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 414.0
-offset_right = 29.0
-offset_bottom = 437.0
-theme_override_fonts/font = ExtResource("5_0u4i6")
-theme_override_font_sizes/font_size = 16
-text = "5"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="LevelUI" parent="CanvasLayer" instance=ExtResource("7_ly68j")]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 

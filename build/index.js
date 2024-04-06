@@ -9454,23 +9454,15 @@ function _godot_js_display_canvas_is_focused() {
 }
 
 function _godot_js_display_clipboard_get(callback) {
-	try {
-		var result = prompt("Paste your token:");
-		const ptr=GodotRuntime.allocString(result);
-		const func=GodotRuntime.get_func(callback);
-		func(ptr);
-		GodotRuntime.free(ptr);
-	} catch (e) { console.log(e) }
-}
-function chunkSubstr(str, size) {
-  const numChunks = Math.ceil(str.length / size)
-  const chunks = new Array(numChunks)
-
-  for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
-    chunks[i] = str.substr(o, size)
-  }
-
-  return chunks
+ if (ENVIRONMENT_IS_PTHREAD) return proxyToMainThread(61, 1, callback);
+ const func = GodotRuntime.get_func(callback);
+ try {
+  navigator.clipboard.readText().then(function(result) {
+   const ptr = GodotRuntime.allocString(result);
+   func(ptr);
+   GodotRuntime.free(ptr);
+  }).catch(function(e) {});
+ } catch (e) {}
 }
 
 function _godot_js_display_clipboard_set(p_text) {

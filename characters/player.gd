@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const TOP_SPEED = 250.0
+const SPEED = 300.0
 const TOP_JUMP = 600.0
 
 var speed = 0.0
@@ -16,6 +16,8 @@ var lookdir: Vector2 = Vector2(0, 0)
 
 var visible_bullets: Array = []
 
+var controls: Dictionary
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,6 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var attack_cooldown = $attack_timer
 @onready var sprites = $AnimatedSprite2D
 @onready var crosshair = $Crosshair
+@onready var player_iframes = $invincible_frames
 @onready var nicobullet = preload("res://characters/nicolo/nicobullet.tscn")
 
 
@@ -37,11 +40,22 @@ func _process(delta):
 	if is_dealing_damage: 
 		velocity.y -= 10
 		velocity.x += 8
-
+	if player_iframes.is_stopped():
+		Global.player_stats["is_invincible"] = false
+		
 func _physics_process(delta):
-	implement_gravity(delta)
-
+	controls = {
+		"up": Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("move_up") || Input.is_action_just_pressed("space"),
+		"down": Input.is_action_pressed("ui_down") || Input.is_action_pressed("move_down"),
+		"left": Input.is_action_pressed("ui_left") || Input.is_action_pressed("move_left"),
+		"right": Input.is_action_pressed("ui_right") || Input.is_action_pressed("move_right"),
+		"just_left": Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("move_left"),
+		"just_right": Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("move_right"),
+		"attack": Input.is_action_pressed("attack")
+	}
 	
+	
+	implement_gravity(delta)
 	nico_movement(delta)
 	nico_attacks(delta)
 	sprites.play("idle")
@@ -51,9 +65,9 @@ func _physics_process(delta):
 func implement_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if (Input.is_action_just_pressed("move_left")):
+	if (controls["just_left"]):
 		velocity.x = -130
-	if (Input.is_action_just_pressed("move_right")):
+	if (controls["just_right"]):
 		velocity.x = 130
 	
 func nico_movement(delta):
@@ -68,23 +82,17 @@ func nico_movement(delta):
 			if velocity.x > 25 and velocity.x <= -25:
 				velocity.x = 0
 
-	if (Input.is_action_just_pressed("move_up") || Input.is_action_just_pressed("space"))&& (is_on_floor() || not coyote_timer.is_stopped()):
+	if controls["up"] && (is_on_floor() || not coyote_timer.is_stopped()):
 		velocity.y = -TOP_JUMP
 
 
-	# Handle speed
-	if (Input.is_action_just_pressed("move_left") and is_on_floor()) or (Input.is_action_just_pressed("move_right") and is_on_floor()):
-		speed = TOP_SPEED
-
 		
-	if Input.is_action_pressed("move_left") and is_on_floor():
-		if not Input.is_action_pressed("move_up"):
-			velocity.x = -300
+	if controls["left"] and is_on_floor():
+			velocity.x = -SPEED
 
 	# Handle right
-	if Input.is_action_pressed("move_right") and is_on_floor():
-		if not Input.is_action_pressed("move_up"):
-			velocity.x = 300
+	if controls["right"] and is_on_floor():
+			velocity.x = SPEED
 
 	var was_on_floor = is_on_floor()
 	
@@ -105,7 +113,7 @@ func nico_movement(delta):
 		coyote_timer.start()
 
 func nico_attacks(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && attack_cooldown.is_stopped():
+	if controls["attack"] && attack_cooldown.is_stopped():
 		shoot_bullet()
 
 # STATUS CHANGES
@@ -114,6 +122,8 @@ func receive_damage(damage, from_who) -> void:
 	sprites.play("hurt")
 	is_dealing_damage = true
 	velocity = Vector2(0,0)
+	player_iframes.start()
+	Global.player_stats["is_invincible"] = true
 	set_physics_process(false)
 
 

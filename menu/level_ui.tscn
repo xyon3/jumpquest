@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://ic54cn5m4dy2"]
+
+[ext_resource type="Script" path="res://menu/level_ui.gd" id="1_0wdgv"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="1_lrxom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kxpy"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="LevelUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0wdgv")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 0.313726)
+layout_mode = 0
+offset_top = 236.0
+offset_right = 40.0
+offset_bottom = 464.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5kxpy")
+
+[node name="QONE" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 264.0
+offset_right = 29.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("1_lrxom")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QTWO" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 303.0
+offset_right = 29.0
+offset_bottom = 326.0
+theme_override_fonts/font = ExtResource("1_lrxom")
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QTHREE" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 339.0
+offset_right = 29.0
+offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("1_lrxom")
+theme_override_font_sizes/font_size = 16
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QFOUR" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 376.0
+offset_right = 29.0
+offset_bottom = 399.0
+theme_override_fonts/font = ExtResource("1_lrxom")
+theme_override_font_sizes/font_size = 16
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QFIVE" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 414.0
+offset_right = 29.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("1_lrxom")
+theme_override_font_sizes/font_size = 16
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

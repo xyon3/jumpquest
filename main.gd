@@ -119,4 +119,5 @@ func new_platform_position():
 func portal_change_scene():
 	if get_node("portal_platform").find_child("Area2D").overlaps_body(player):
 		get_tree().change_scene_to_file("res://world/scenes/qna_scene.tscn")
+		Global.player_stats["in_tutorial"] = false
 		

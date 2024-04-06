@@ -1,47 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4uwuq7kg751p"]
+[gd_scene load_steps=10 format=3 uid="uid://b4uwuq7kg751p"]
 
-[ext_resource type="Texture2D" uid="uid://dtr5gn17w6du4" path="res://characters/nicolo/nicolo_bullet.png" id="1_77d7v"]
 [ext_resource type="Script" path="res://characters/nicolo/nicobullet.gd" id="1_nkyk2"]
+[ext_resource type="Texture2D" uid="uid://ceosf85q3ajwl" path="res://characters/nicolo/bulletstatic.png" id="2_fjvv5"]
+[ext_resource type="Texture2D" uid="uid://wc5swdoyv5j6" path="res://textures/light_low.png" id="3_ethu6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxqg2"]
-atlas = ExtResource("1_77d7v")
-region = Rect2(0, 0, 512, 512)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hysk"]
+atlas = ExtResource("2_fjvv5")
+region = Rect2(512, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hv5np"]
-atlas = ExtResource("1_77d7v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nan5v"]
+atlas = ExtResource("2_fjvv5")
 region = Rect2(0, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_41m34"]
-atlas = ExtResource("1_77d7v")
-region = Rect2(512, 0, 512, 512)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wubxt"]
+atlas = ExtResource("2_fjvv5")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uty83"]
-atlas = ExtResource("1_77d7v")
-region = Rect2(512, 512, 512, 512)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5hic"]
+atlas = ExtResource("2_fjvv5")
+region = Rect2(512, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_owt45"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sxqg2")
+"texture": SubResource("AtlasTexture_6hysk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hv5np")
+"texture": SubResource("AtlasTexture_nan5v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_41m34")
+"texture": SubResource("AtlasTexture_wubxt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uty83")
+"texture": SubResource("AtlasTexture_s5hic")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 2.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u2hx"]
-radius = 133.333
-height = 488.889
+radius = 177.778
+height = 400.0
 
 [node name="nicobullet" type="CharacterBody2D"]
 collision_layer = 4
@@ -49,7 +50,8 @@ collision_mask = 0
 script = ExtResource("1_nkyk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.045, 0.045)
+modulate = Color(1, 0.698039, 0.101961, 1)
+scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_owt45")
 frame_progress = 0.441497
 
@@ -57,3 +59,10 @@ frame_progress = 0.441497
 rotation = 1.5708
 scale = Vector2(0.045, 0.045)
 shape = SubResource("CapsuleShape2D_3u2hx")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.250002, 0)
+scale = Vector2(0.241875, 0.075)
+color = Color(1, 1, 0.631373, 0.670588)
+energy = 4.33
+texture = ExtResource("3_ethu6")

@@ -46,11 +46,21 @@ func assign_question_data(text, choices, answer):
 		portal_platforms[x].find_child("Label").text = choices[x]
 		if choices[x] == answer:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
-				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")
-				Global.wave_count = 3
+				Global.points += 300
+				Global.wave_count = 1
 				Global.wave_type = "NORMAL"
+				Global.question_answered.append({
+					"index": Global.question_answered.size(),
+					"res": true
+				})
+				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")
 		else:
 			if portal_platforms[x].find_child("Area2D").overlaps_body(player):
-				Global.wave_count = 6
+				Global.points += 150
+				Global.wave_count = 1
 				Global.wave_type = "PUNISHMENT"
+				Global.question_answered.append({
+					"index": Global.question_answered.size(),
+					"res": false
+				})
 				get_tree().change_scene_to_file("res://world/scenes/wave_battle.tscn")

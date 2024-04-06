@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://dytacp2os6sr6"]
+
+[ext_resource type="Script" path="res://world/scenes/result_scene.gd" id="1_eyaw3"]
+[ext_resource type="Texture2D" uid="uid://tbj5qfraaejf" path="res://world/bg/bg_full.png" id="1_u7576"]
+[ext_resource type="FontFile" uid="uid://bjqdisclckgvi" path="res://fonts/PressStart2P-Regular.ttf" id="2_pqtys"]
+
+[sub_resource type="Animation" id="Animation_jt10o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(578, -480)]
+}
+
+[sub_resource type="Animation" id="Animation_q5fqq"]
+resource_name = "bg_move"
+length = 60.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 59.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(578, -480), Vector2(581, 163)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26kw2"]
+_data = {
+"RESET": SubResource("Animation_jt10o"),
+"bg_move": SubResource("Animation_q5fqq")
+}
+
+[node name="ResultScene" type="Node2D"]
+script = ExtResource("1_eyaw3")
+
+[node name="BgFull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.870588, 1)
+self_modulate = Color(0.701961, 0.701961, 0.701961, 1)
+light_mask = 131073
+visibility_layer = 524800
+position = Vector2(578, -480)
+scale = Vector2(1.54, 1.144)
+texture = ExtResource("1_u7576")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="BgFull"]
+position = Vector2(-286.404, 342.495)
+scale = Vector2(0.495508, 0.713531)
+color = Color(0.988235, 0.701961, 0.627451, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BgFull"]
+libraries = {
+"": SubResource("AnimationLibrary_26kw2")
+}
+
+[node name="TotalPoints" type="Label" parent="."]
+offset_left = 456.0
+offset_top = 276.0
+offset_right = 696.0
+offset_bottom = 324.0
+theme_override_fonts/font = ExtResource("2_pqtys")
+theme_override_font_sizes/font_size = 48
+text = "21239"
+horizontal_alignment = 1
+
+[node name="Label1" type="Label" parent="."]
+offset_left = 504.0
+offset_top = 319.86
+offset_right = 648.0
+offset_bottom = 343.86
+theme_override_fonts/font = ExtResource("2_pqtys")
+theme_override_font_sizes/font_size = 24
+text = "points"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 924.0
+offset_top = 585.0
+offset_right = 1134.0
+offset_bottom = 625.0
+theme_override_fonts/font = ExtResource("2_pqtys")
+text = "Send Result"
